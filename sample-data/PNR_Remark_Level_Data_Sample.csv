@@ -1,0 +1,101 @@
+pnr_id,remark_code,remark_text,remark_category,priority_level,created_date,resolved_date,status
+PNR001,SSR,Vegetarian meal requested,Special Service,Medium,2024-01-15T08:00:00,2024-01-15T08:30:00,Resolved
+PNR002,SSR,Wheelchair assistance needed,Special Service,High,2024-01-15T08:15:00,2024-01-15T08:45:00,Resolved
+PNR003,SSR,Unaccompanied minor,Special Service,High,2024-01-15T08:30:00,2024-01-15T09:00:00,Resolved
+PNR004,SSR,Pet travel approved,Special Service,Medium,2024-01-15T08:45:00,2024-01-15T09:15:00,Resolved
+PNR005,SSR,Group booking special handling,Special Service,Low,2024-01-15T09:00:00,2024-01-15T09:30:00,Resolved
+PNR006,SSR,Gluten-free meal requested,Special Service,Medium,2024-01-15T09:15:00,2024-01-15T09:45:00,Resolved
+PNR007,SSR,Standard meal preference,Special Service,Low,2024-01-15T09:30:00,2024-01-15T10:00:00,Resolved
+PNR008,SSR,Vegetarian meal confirmed,Special Service,Medium,2024-01-15T09:45:00,2024-01-15T10:15:00,Resolved
+PNR009,SSR,Wheelchair assistance confirmed,Special Service,High,2024-01-15T10:00:00,2024-01-15T10:30:00,Resolved
+PNR010,SSR,Unaccompanied minor confirmed,Special Service,High,2024-01-15T10:15:00,2024-01-15T10:45:00,Resolved
+PNR011,SSR,Pet travel confirmed,Special Service,Medium,2024-01-15T10:30:00,2024-01-15T11:00:00,Resolved
+PNR012,SSR,Group booking confirmed,Special Service,Low,2024-01-15T10:45:00,2024-01-15T11:15:00,Resolved
+PNR013,SSR,Gluten-free meal confirmed,Special Service,Medium,2024-01-15T11:00:00,2024-01-15T11:30:00,Resolved
+PNR014,SSR,Standard meal confirmed,Special Service,Low,2024-01-15T11:15:00,2024-01-15T11:45:00,Resolved
+PNR015,SSR,Vegetarian meal requested,Special Service,Medium,2024-01-15T11:30:00,2024-01-15T12:00:00,Resolved
+PNR016,SSR,Wheelchair assistance needed,Special Service,High,2024-01-15T11:45:00,2024-01-15T12:15:00,Resolved
+PNR017,SSR,Unaccompanied minor,Special Service,High,2024-01-15T12:00:00,2024-01-15T12:30:00,Resolved
+PNR018,SSR,Pet travel approved,Special Service,Medium,2024-01-15T12:15:00,2024-01-15T12:45:00,Resolved
+PNR019,SSR,Group booking special handling,Special Service,Low,2024-01-15T12:30:00,2024-01-15T13:00:00,Resolved
+PNR020,SSR,Gluten-free meal requested,Special Service,Medium,2024-01-15T12:45:00,2024-01-15T13:15:00,Resolved
+PNR021,SSR,Standard meal preference,Special Service,Low,2024-01-15T13:00:00,2024-01-15T13:30:00,Resolved
+PNR022,SSR,Vegetarian meal confirmed,Special Service,Medium,2024-01-15T13:15:00,2024-01-15T13:45:00,Resolved
+PNR023,SSR,Wheelchair assistance confirmed,Special Service,High,2024-01-15T13:30:00,2024-01-15T14:00:00,Resolved
+PNR024,SSR,Unaccompanied minor confirmed,Special Service,High,2024-01-15T13:45:00,2024-01-15T14:15:00,Resolved
+PNR025,SSR,Pet travel confirmed,Special Service,Medium,2024-01-15T14:00:00,2024-01-15T14:30:00,Resolved
+PNR026,SSR,Group booking confirmed,Special Service,Low,2024-01-15T14:15:00,2024-01-15T14:45:00,Resolved
+PNR027,SSR,Gluten-free meal confirmed,Special Service,Medium,2024-01-15T14:30:00,2024-01-15T15:00:00,Resolved
+PNR028,SSR,Standard meal confirmed,Special Service,Low,2024-01-15T14:45:00,2024-01-15T15:15:00,Resolved
+PNR029,SSR,Vegetarian meal requested,Special Service,Medium,2024-01-15T15:00:00,2024-01-15T15:30:00,Resolved
+PNR030,SSR,Wheelchair assistance needed,Special Service,High,2024-01-15T15:15:00,2024-01-15T15:45:00,Resolved
+PNR031,SSR,Unaccompanied minor,Special Service,High,2024-01-15T15:30:00,2024-01-15T16:00:00,Resolved
+PNR032,SSR,Pet travel approved,Special Service,Medium,2024-01-15T15:45:00,2024-01-15T16:15:00,Resolved
+PNR033,SSR,Group booking special handling,Special Service,Low,2024-01-15T16:00:00,2024-01-15T16:30:00,Resolved
+PNR034,SSR,Gluten-free meal requested,Special Service,Medium,2024-01-15T16:15:00,2024-01-15T16:45:00,Resolved
+PNR035,SSR,Standard meal preference,Special Service,Low,2024-01-15T16:30:00,2024-01-15T17:00:00,Resolved
+PNR036,SSR,Vegetarian meal confirmed,Special Service,Medium,2024-01-15T16:45:00,2024-01-15T17:15:00,Resolved
+PNR037,SSR,Wheelchair assistance confirmed,Special Service,High,2024-01-15T17:00:00,2024-01-15T17:30:00,Resolved
+PNR038,SSR,Unaccompanied minor confirmed,Special Service,High,2024-01-15T17:15:00,2024-01-15T17:45:00,Resolved
+PNR039,SSR,Pet travel confirmed,Special Service,Medium,2024-01-15T17:30:00,2024-01-15T18:00:00,Resolved
+PNR040,SSR,Group booking confirmed,Special Service,Low,2024-01-15T17:45:00,2024-01-15T18:15:00,Resolved
+PNR041,SSR,Gluten-free meal confirmed,Special Service,Medium,2024-01-15T18:00:00,2024-01-15T18:30:00,Resolved
+PNR042,SSR,Standard meal confirmed,Special Service,Low,2024-01-15T18:15:00,2024-01-15T18:45:00,Resolved
+PNR043,SSR,Vegetarian meal requested,Special Service,Medium,2024-01-15T18:30:00,2024-01-15T19:00:00,Resolved
+PNR044,SSR,Wheelchair assistance needed,Special Service,High,2024-01-15T18:45:00,2024-01-15T19:15:00,Resolved
+PNR045,SSR,Unaccompanied minor,Special Service,High,2024-01-15T19:00:00,2024-01-15T19:30:00,Resolved
+PNR046,SSR,Pet travel approved,Special Service,Medium,2024-01-15T19:15:00,2024-01-15T19:45:00,Resolved
+PNR047,SSR,Group booking special handling,Special Service,Low,2024-01-15T19:30:00,2024-01-15T20:00:00,Resolved
+PNR048,SSR,Gluten-free meal requested,Special Service,Medium,2024-01-15T19:45:00,2024-01-15T20:15:00,Resolved
+PNR049,SSR,Standard meal preference,Special Service,Low,2024-01-15T20:00:00,2024-01-15T20:30:00,Resolved
+PNR050,SSR,Vegetarian meal confirmed,Special Service,Medium,2024-01-15T20:15:00,2024-01-15T20:45:00,Resolved
+PNR051,SSR,Wheelchair assistance confirmed,Special Service,High,2024-01-15T20:30:00,2024-01-15T21:00:00,Resolved
+PNR052,SSR,Unaccompanied minor confirmed,Special Service,High,2024-01-15T20:45:00,2024-01-15T21:15:00,Resolved
+PNR053,SSR,Pet travel confirmed,Special Service,Medium,2024-01-15T21:00:00,2024-01-15T21:30:00,Resolved
+PNR054,SSR,Group booking confirmed,Special Service,Low,2024-01-15T21:15:00,2024-01-15T21:45:00,Resolved
+PNR055,SSR,Gluten-free meal confirmed,Special Service,Medium,2024-01-15T21:30:00,2024-01-15T22:00:00,Resolved
+PNR056,SSR,Standard meal confirmed,Special Service,Low,2024-01-15T21:45:00,2024-01-15T22:15:00,Resolved
+PNR057,SSR,Vegetarian meal requested,Special Service,Medium,2024-01-15T22:00:00,2024-01-15T22:30:00,Resolved
+PNR058,SSR,Wheelchair assistance needed,Special Service,High,2024-01-15T22:15:00,2024-01-15T22:45:00,Resolved
+PNR059,SSR,Unaccompanied minor,Special Service,High,2024-01-15T22:30:00,2024-01-15T23:00:00,Resolved
+PNR060,SSR,Pet travel approved,Special Service,Medium,2024-01-15T22:45:00,2024-01-15T23:15:00,Resolved
+PNR061,SSR,Group booking special handling,Special Service,Low,2024-01-15T23:00:00,2024-01-15T23:30:00,Resolved
+PNR062,SSR,Gluten-free meal requested,Special Service,Medium,2024-01-15T23:15:00,2024-01-15T23:45:00,Resolved
+PNR063,SSR,Standard meal preference,Special Service,Low,2024-01-15T23:30:00,2024-01-16T00:00:00,Resolved
+PNR064,SSR,Vegetarian meal confirmed,Special Service,Medium,2024-01-16T00:00:00,2024-01-16T00:30:00,Resolved
+PNR065,SSR,Wheelchair assistance confirmed,Special Service,High,2024-01-16T00:15:00,2024-01-16T00:45:00,Resolved
+PNR066,SSR,Unaccompanied minor confirmed,Special Service,High,2024-01-16T00:30:00,2024-01-16T01:00:00,Resolved
+PNR067,SSR,Pet travel confirmed,Special Service,Medium,2024-01-16T00:45:00,2024-01-16T01:15:00,Resolved
+PNR068,SSR,Group booking confirmed,Special Service,Low,2024-01-16T01:00:00,2024-01-16T01:30:00,Resolved
+PNR069,SSR,Gluten-free meal confirmed,Special Service,Medium,2024-01-16T01:15:00,2024-01-16T01:45:00,Resolved
+PNR070,SSR,Standard meal confirmed,Special Service,Low,2024-01-16T01:30:00,2024-01-16T02:00:00,Resolved
+PNR071,SSR,Vegetarian meal requested,Special Service,Medium,2024-01-16T01:45:00,2024-01-16T02:15:00,Resolved
+PNR072,SSR,Wheelchair assistance needed,Special Service,High,2024-01-16T02:00:00,2024-01-16T02:30:00,Resolved
+PNR073,SSR,Unaccompanied minor,Special Service,High,2024-01-16T02:15:00,2024-01-16T02:45:00,Resolved
+PNR074,SSR,Pet travel approved,Special Service,Medium,2024-01-16T02:30:00,2024-01-16T03:00:00,Resolved
+PNR075,SSR,Group booking special handling,Special Service,Low,2024-01-16T02:45:00,2024-01-16T03:15:00,Resolved
+PNR076,SSR,Gluten-free meal requested,Special Service,Medium,2024-01-16T03:00:00,2024-01-16T03:30:00,Resolved
+PNR077,SSR,Standard meal preference,Special Service,Low,2024-01-16T03:15:00,2024-01-16T03:45:00,Resolved
+PNR078,SSR,Vegetarian meal confirmed,Special Service,Medium,2024-01-16T03:30:00,2024-01-16T04:00:00,Resolved
+PNR079,SSR,Wheelchair assistance confirmed,Special Service,High,2024-01-16T03:45:00,2024-01-16T04:15:00,Resolved
+PNR080,SSR,Unaccompanied minor confirmed,Special Service,High,2024-01-16T04:00:00,2024-01-16T04:30:00,Resolved
+PNR081,SSR,Pet travel confirmed,Special Service,Medium,2024-01-16T04:15:00,2024-01-16T04:45:00,Resolved
+PNR082,SSR,Group booking confirmed,Special Service,Low,2024-01-16T04:30:00,2024-01-16T05:00:00,Resolved
+PNR083,SSR,Gluten-free meal confirmed,Special Service,Medium,2024-01-16T04:45:00,2024-01-16T05:15:00,Resolved
+PNR084,SSR,Standard meal confirmed,Special Service,Low,2024-01-16T05:00:00,2024-01-16T05:30:00,Resolved
+PNR085,SSR,Vegetarian meal requested,Special Service,Medium,2024-01-16T05:15:00,2024-01-16T05:45:00,Resolved
+PNR086,SSR,Wheelchair assistance needed,Special Service,High,2024-01-16T05:30:00,2024-01-16T06:00:00,Resolved
+PNR087,SSR,Unaccompanied minor,Special Service,High,2024-01-16T05:45:00,2024-01-16T06:15:00,Resolved
+PNR088,SSR,Pet travel approved,Special Service,Medium,2024-01-16T06:00:00,2024-01-16T06:30:00,Resolved
+PNR089,SSR,Group booking special handling,Special Service,Low,2024-01-16T06:15:00,2024-01-16T06:45:00,Resolved
+PNR090,SSR,Gluten-free meal requested,Special Service,Medium,2024-01-16T06:30:00,2024-01-16T07:00:00,Resolved
+PNR091,SSR,Standard meal preference,Special Service,Low,2024-01-16T06:45:00,2024-01-16T07:15:00,Resolved
+PNR092,SSR,Vegetarian meal confirmed,Special Service,Medium,2024-01-16T07:00:00,2024-01-16T07:30:00,Resolved
+PNR093,SSR,Wheelchair assistance confirmed,Special Service,High,2024-01-16T07:15:00,2024-01-16T07:45:00,Resolved
+PNR094,SSR,Unaccompanied minor confirmed,Special Service,High,2024-01-16T07:30:00,2024-01-16T08:00:00,Resolved
+PNR095,SSR,Pet travel confirmed,Special Service,Medium,2024-01-16T07:45:00,2024-01-16T08:15:00,Resolved
+PNR096,SSR,Group booking confirmed,Special Service,Low,2024-01-16T08:00:00,2024-01-16T08:30:00,Resolved
+PNR097,SSR,Gluten-free meal confirmed,Special Service,Medium,2024-01-16T08:15:00,2024-01-16T08:45:00,Resolved
+PNR098,SSR,Standard meal confirmed,Special Service,Low,2024-01-16T08:30:00,2024-01-16T09:00:00,Resolved
+PNR099,SSR,Vegetarian meal requested,Special Service,Medium,2024-01-16T08:45:00,2024-01-16T09:15:00,Resolved
+PNR100,SSR,Wheelchair assistance needed,Special Service,High,2024-01-16T09:00:00,2024-01-16T09:30:00,Resolved

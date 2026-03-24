@@ -1,0 +1,3 @@
+company_id,flight_number,scheduled_departure_date_local,scheduled_departure_station_code,scheduled_arrival_station_code,record_locator,pnr_creation_date,total_pax,lap_child_count,is_child,basic_economy_pax,is_stroller_user
+UA,1234,2025-10-25,ORD,SFO,ABC123,2025-10-20,2,0,N,0,N
+UA,5678,2025-10-25,SFO,LAX,DEF456,2025-10-21,1,0,N,1,N

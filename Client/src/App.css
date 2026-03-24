@@ -1,0 +1,121 @@
+/* ─────────────────────────────────────────────────────────── */
+/*  App.css — Component-level styles (non-conflicting)       */
+/* ─────────────────────────────────────────────────────────── */
+
+/* Difficulty score text colors */
+.difficulty-difficult { color: #ef4444; }
+.difficulty-medium { color: #f59e0b; }
+.difficulty-easy { color: #10b981; }
+
+/* Flight detail cards */
+.flight-card {
+  margin-bottom: 16px;
+  transition: all 0.3s ease;
+}
+
+.flight-card:hover {
+  transform: translateY(-2px);
+}
+
+.flight-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.flight-route {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.flight-meta {
+  display: flex;
+  gap: 16px;
+  margin-top: 8px;
+  font-size: 0.9rem;
+  color: #64748b;
+}
+
+/* Score breakdown bars */
+.score-breakdown { margin-top: 16px; }
+
+.score-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+}
+.score-item:last-child { border-bottom: none; }
+
+.score-bar {
+  width: 100px;
+  height: 6px;
+  background-color: #e2e8f0;
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.score-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #3b82f6, #38bdf8);
+  transition: width 0.3s ease;
+  border-radius: 99px;
+}
+
+/* Upload area */
+.upload-area {
+  border: 2px dashed #cbd5e1;
+  border-radius: 14px;
+  padding: 40px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.5);
+  transition: all 0.3s ease;
+}
+
+.upload-area:hover {
+  border-color: #3b82f6;
+  background: rgba(239, 246, 255, 0.6);
+}
+
+.upload-area.dragover {
+  border-color: #3b82f6;
+  background: rgba(219, 234, 254, 0.6);
+}
+
+/* Insight cards */
+.insight-card {
+  margin-bottom: 16px;
+  border-left: 4px solid #3b82f6;
+}
+
+/* Stats grid (legacy pages) */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+/* Error state */
+.error-container {
+  text-align: center;
+  padding: 40px;
+  color: #ef4444;
+}
+
+@media (max-width: 768px) {
+  .flight-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .flight-meta {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+}
