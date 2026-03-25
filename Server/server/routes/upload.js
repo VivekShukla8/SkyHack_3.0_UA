@@ -26,7 +26,7 @@ const MODEL_BY_TYPE = {
 
 // Configure multer for file uploads
 const upload = multer({
-  dest: 'uploads/',
+  dest: os.tmpdir(),
   limits: {
     fileSize: 500 * 1024 * 1024 // 500MB limit
   },

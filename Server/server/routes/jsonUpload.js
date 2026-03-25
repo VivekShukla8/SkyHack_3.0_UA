@@ -4,6 +4,7 @@ const multer = require('multer');
 const csv = require('csv-parser');
 const fs = require('fs');
 const path = require('path');
+const os = require('os');
 const moment = require('moment');
 
 // Import the new model for storing raw data
@@ -11,7 +12,7 @@ const UploadedData = require('../models/UploadedData');
 
 // Configure multer for file uploads
 const upload = multer({
-  dest: 'uploads/',
+  dest: os.tmpdir(),
   limits: {
     fileSize: 500 * 1024 * 1024 // 500MB limit
   },
