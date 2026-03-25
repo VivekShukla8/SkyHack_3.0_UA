@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {
   Card,
   Row,
@@ -6,11 +6,8 @@ import {
   Typography,
   Tag,
   Statistic,
-  Progress,
-  Divider,
   Spin,
   Alert,
-  Timeline,
   Descriptions,
   Space,
   Button
@@ -21,7 +18,6 @@ import {
   WarningOutlined,
   ClockCircleOutlined,
   UserOutlined,
-  ShoppingCartOutlined,
   CarOutlined
 } from '@ant-design/icons';
 import { useParams, useNavigate } from 'react-router-dom';
@@ -38,11 +34,7 @@ const FlightDetails = () => {
   const [flight, setFlight] = useState(null);
   const [details, setDetails] = useState(null);
 
-  useEffect(() => {
-    fetchFlightDetails();
-  }, [id]);
-
-  const fetchFlightDetails = async () => {
+  const fetchFlightDetails = useCallback(async () => {
     try {
       setLoading(true);
       const response = await axios.get(`/flights/${id}/difficulty-details`);
@@ -53,7 +45,11 @@ const FlightDetails = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [id]);
+
+  useEffect(() => {
+    fetchFlightDetails();
+  }, [fetchFlightDetails]);
 
   const getDifficultyColor = (category) => {
     switch (category) {

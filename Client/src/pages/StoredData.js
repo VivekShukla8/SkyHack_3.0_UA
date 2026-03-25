@@ -81,6 +81,7 @@ const StoredData = () => {
     } finally {
       setLoading(false);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedDataType, pagination.current, pagination.pageSize, message]);
 
   useEffect(() => {

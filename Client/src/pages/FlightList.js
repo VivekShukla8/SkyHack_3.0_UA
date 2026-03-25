@@ -68,12 +68,7 @@ const FlightList = () => {
     fetchDateRange();
   }, []);
 
-  useEffect(() => {
-    if (!dateReady) return;
-    fetchFlights();
-  }, [filters, pagination.current, pagination.pageSize, dateReady]);
-
-  const fetchFlights = async () => {
+  const fetchFlights = useCallback(async () => {
     try {
       setLoading(true);
       const params = {
@@ -92,7 +87,13 @@ const FlightList = () => {
     } finally {
       setLoading(false);
     }
-  };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [filters, pagination.current, pagination.pageSize]);
+
+  useEffect(() => {
+    if (!dateReady) return;
+    fetchFlights();
+  }, [fetchFlights, dateReady]);
 
   const handleFilterChange = (key, value) => {
     setFilters(prev => ({ ...prev, [key]: value }));
