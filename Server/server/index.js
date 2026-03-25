@@ -32,6 +32,7 @@ const PORT = process.env.PORT || 9000;
 // Middleware
 const allowedOrigins = [
   'http://localhost:3000', // Explicitly allow development origin
+  'https://skyhack-3ll7q8h01-vivek-shuklas-projects-8ebbc1b2.vercel.app', // Frontend Vercel URL
   process.env.CORS_ORIGIN // Allow origin from .env for production/staging
 ];
 
@@ -39,12 +40,18 @@ const allowedOrigins = [
 app.use(cors({
   origin: (origin, callback) => {
     // Allow requests with no origin (like mobile apps or curl)
-    if (!origin) return callback(null, true); 
-    if (allowedOrigins.includes(origin) || origin.startsWith('http://localhost:')) {
-      return callback(null, true);
-    }
+    if (!origin) return callback(null, true);
+    // Allow all origins if CORS_ORIGIN is set to *
+    if (process.env.CORS_ORIGIN === '*') return callback(null, true);
+    // Allow all vercel.app subdomains
+    if (origin.endsWith('.vercel.app')) return callback(null, true);
+    // Allow localhost
+    if (origin.startsWith('http://localhost:')) return callback(null, true);
+    // Allow explicitly configured origin
+    if (process.env.CORS_ORIGIN && origin === process.env.CORS_ORIGIN.trim()) return callback(null, true);
     callback(new Error('Not allowed by CORS'));
-  }
+  },
+  credentials: true
 }));
 
 app.use(express.json());
