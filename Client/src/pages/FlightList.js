@@ -40,8 +40,8 @@ const FlightList = () => {
   const [dataDateRange, setDataDateRange] = useState(null);
   const [filters, setFilters] = useState({
     date: '',
-    category: '',
-    carrier: '',
+    category: undefined,
+    carrier: undefined,
     origin: '',
     destination: '',
     search: ''

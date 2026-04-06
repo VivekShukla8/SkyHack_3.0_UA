@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Card, Form, Input, Button, Typography, App as AntApp } from 'antd';
 import axios from '../api/axios';
 import { useAuth } from '../auth/AuthContext';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, useLocation, Link } from 'react-router-dom';
 
 const { Title, Text } = Typography;
 
@@ -10,7 +10,11 @@ export default function Login() {
   const { message } = AntApp.useApp();
   const { login } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
   const [loading, setLoading] = useState(false);
+
+  // Redirect back to the page that triggered the auth guard
+  const from = location.state?.from?.pathname || '/dashboard';
 
   const onFinish = async (values) => {
     try {
@@ -18,7 +22,7 @@ export default function Login() {
       const res = await axios.post('/auth/login', values);
       login(res.data.token, res.data.user);
       message.success('Logged in successfully');
-      navigate('/');
+      navigate(from, { replace: true });
     } catch (err) {
       message.error(err?.response?.data?.error || 'Login failed');
     } finally {
@@ -50,3 +54,4 @@ export default function Login() {
     </div>
   );
 }
+

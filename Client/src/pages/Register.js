@@ -18,7 +18,7 @@ export default function Register() {
       const res = await axios.post('/auth/register', values);
       login(res.data.token, res.data.user);
       message.success('Registered and logged in');
-      navigate('/');
+      navigate('/dashboard');
     } catch (err) {
       message.error(err?.response?.data?.error || 'Registration failed');
     } finally {

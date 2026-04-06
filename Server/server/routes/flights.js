@@ -10,9 +10,10 @@ const _ = require('lodash');
 // Get the actual date range of stored flight data
 router.get('/date-range', async (req, res) => {
   try {
+    const userFilter = { userId: req.user.id };
     const [earliest, latest] = await Promise.all([
-      Flight.findOne({}).sort({ scheduled_departure_date_local: 1 }).select('scheduled_departure_date_local').lean(),
-      Flight.findOne({}).sort({ scheduled_departure_date_local: -1 }).select('scheduled_departure_date_local').lean()
+      Flight.findOne(userFilter).sort({ scheduled_departure_date_local: 1 }).select('scheduled_departure_date_local').lean(),
+      Flight.findOne(userFilter).sort({ scheduled_departure_date_local: -1 }).select('scheduled_departure_date_local').lean()
     ]);
 
     if (!earliest || !latest) {
@@ -45,7 +46,7 @@ router.get('/', async (req, res) => {
       sortOrder = 'desc'
     } = req.query;
 
-    let query = {};
+    let query = { userId: req.user.id };
 
     // Date filtering
     if (date) {
@@ -106,7 +107,7 @@ router.get('/', async (req, res) => {
 // Get flight by ID
 router.get('/:id', async (req, res) => {
   try {
-    const flight = await Flight.findById(req.params.id);
+    const flight = await Flight.findOne({ _id: req.params.id, userId: req.user.id });
     
     if (!flight) {
       return res.status(404).json({ error: 'Flight not found' });
@@ -122,7 +123,7 @@ router.get('/:id', async (req, res) => {
 // Get flight difficulty details with breakdown
 router.get('/:id/difficulty-details', async (req, res) => {
   try {
-    const flight = await Flight.findById(req.params.id);
+    const flight = await Flight.findOne({ _id: req.params.id, userId: req.user.id });
     
     if (!flight) {
       return res.status(404).json({ error: 'Flight not found' });
@@ -197,9 +198,11 @@ router.get('/daily/:date/summary', async (req, res) => {
     const startDate = moment(date).startOf('day').toDate();
     const endDate = moment(date).endOf('day').toDate();
 
+    const dateMatch = { scheduled_departure_date_local: { $gte: startDate, $lt: endDate }, userId: req.user.id };
+
     const [summary, categoryBreakdown, topDifficultFlights] = await Promise.all([
       Flight.aggregate([
-        { $match: { scheduled_departure_date_local: { $gte: startDate, $lt: endDate } } },
+        { $match: dateMatch },
         { $group: {
           _id: null,
           totalFlights: { $sum: 1 },
@@ -213,11 +216,11 @@ router.get('/daily/:date/summary', async (req, res) => {
       ]),
 
       Flight.aggregate([
-        { $match: { scheduled_departure_date_local: { $gte: startDate, $lt: endDate } } },
+        { $match: dateMatch },
         { $group: { _id: '$difficulty_category', count: { $sum: 1 }, avgScore: { $avg: '$difficulty_score' } } }
       ]),
 
-      Flight.find({ scheduled_departure_date_local: { $gte: startDate, $lt: endDate } })
+      Flight.find(dateMatch)
         .sort({ difficulty_score: -1 })
         .limit(10)
         .select('flight_number scheduled_departure_station_code scheduled_arrival_station_code difficulty_score difficulty_category')

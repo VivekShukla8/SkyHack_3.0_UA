@@ -289,7 +289,13 @@ const Dashboard = () => {
                 <BarChart data={dayBars}>
                   <XAxis dataKey="day" tick={{ fill: chartTextColor, fontSize: 11 }} />
                   <YAxis tick={{ fill: chartTextColor, fontSize: 11 }} />
-                  <Tooltip contentStyle={{ background: isDark ? '#1e293b' : '#fff', border: 'none', borderRadius: 8, color: 'var(--text-primary)' }} />
+                  <Tooltip
+                    contentStyle={{ background: isDark ? '#0f172a' : '#fff', border: isDark ? '1px solid #334155' : '1px solid #e2e8f0', borderRadius: 8, boxShadow: '0 4px 12px rgba(0,0,0,0.3)' }}
+                    labelStyle={{ color: isDark ? '#93c5fd' : '#334155', fontWeight: 600, fontSize: 12, marginBottom: 4 }}
+                    itemStyle={{ color: isDark ? '#f1f5f9' : '#1e293b', fontWeight: 500, fontSize: 13 }}
+                    formatter={(value) => [value?.toFixed(1), 'Avg Score']}
+                    cursor={{ fill: isDark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.05)' }}
+                  />
                   <Bar dataKey="score" radius={[4, 4, 0, 0]} name="Avg Score">
                     {dayBars.map((d, i) => <Cell key={i} fill={d.color} />)}
                   </Bar>

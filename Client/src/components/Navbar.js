@@ -23,7 +23,7 @@ const Navbar = () => {
 
   const selectedKey = (() => {
     const path = location.pathname;
-    if (path === '/') return 'dashboard';
+    if (path === '/dashboard') return 'dashboard';
     if (path.startsWith('/flights')) return 'flights';
     if (path.startsWith('/analytics')) return 'analytics';
     if (path.startsWith('/upload')) return 'upload';
@@ -57,7 +57,7 @@ const Navbar = () => {
   };
 
   const navItems = [
-    { key: 'dashboard', icon: <DashboardOutlined />, label: 'Dashboard', onClick: () => safeNavigate('/') },
+    { key: 'dashboard', icon: <DashboardOutlined />, label: 'Dashboard', onClick: () => safeNavigate('/dashboard') },
     { key: 'flights', icon: <UnorderedListOutlined />, label: 'Flights', onClick: () => safeNavigate('/flights') },
     { key: 'analytics', icon: <BarChartOutlined />, label: 'Analytics', onClick: () => safeNavigate('/analytics') },
     { key: 'upload', icon: <CloudUploadOutlined />, label: 'Upload', onClick: () => safeNavigate('/upload') },
@@ -113,7 +113,7 @@ const Navbar = () => {
 
       {/* Nav Menu */}
       <Menu mode="horizontal" selectedKeys={[selectedKey]} items={navItems} className="nav-menu"
-        style={{ flex: 1, background: 'transparent', borderBottom: 'none', lineHeight: '56px', minWidth: 0 }} theme="dark" />
+        style={{ flex: 1, background: 'transparent', borderBottom: 'none', lineHeight: '56px', minWidth: 0, justifyContent: 'center' }} theme="dark" />
 
       {/* Right side */}
       <div style={{ flexShrink: 0, display: 'flex', alignItems: 'center', gap: 10 }}>

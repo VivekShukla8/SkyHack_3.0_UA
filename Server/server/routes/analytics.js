@@ -3,22 +3,24 @@ const router = express.Router();
 const Flight = require('../models/Flight');
 const moment = require('moment');
 
-// Helper: build date filter
-function buildDateFilter(startDate, endDate) {
-  if (!startDate || !endDate) return {};
-  return {
-    scheduled_departure_date_local: {
+// Helper: build date filter with userId scoping
+function buildDateFilter(startDate, endDate, userId) {
+  const filter = {};
+  if (userId) filter.userId = userId;
+  if (startDate && endDate) {
+    filter.scheduled_departure_date_local = {
       $gte: moment(startDate).startOf('day').toDate(),
       $lt: moment(endDate).endOf('day').toDate()
-    }
-  };
+    };
+  }
+  return filter;
 }
 
 // ─── GET /eda ────────────────────────────────────────────────
 // Uses pre-aggregated fields on Flight docs — NO $lookup needed
 router.get('/eda', async (req, res) => {
   try {
-    const dateFilter = buildDateFilter(req.query.startDate, req.query.endDate);
+    const dateFilter = buildDateFilter(req.query.startDate, req.query.endDate, req.user.id);
 
     // Run ALL aggregations in parallel
     const [delayStats, groundTimeStats, bagStats, passengerStats, specialServiceStats, correlationData] = await Promise.all([
@@ -126,7 +128,7 @@ router.get('/eda', async (req, res) => {
 router.get('/destinations', async (req, res) => {
   try {
     const { limit = 20 } = req.query;
-    const dateFilter = buildDateFilter(req.query.startDate, req.query.endDate);
+    const dateFilter = buildDateFilter(req.query.startDate, req.query.endDate, req.user.id);
 
     const destinationStats = await Flight.aggregate([
       { $match: dateFilter },
@@ -160,7 +162,7 @@ router.get('/destinations', async (req, res) => {
 // ─── GET /insights ───────────────────────────────────────────
 router.get('/insights', async (req, res) => {
   try {
-    const dateFilter = buildDateFilter(req.query.startDate, req.query.endDate);
+    const dateFilter = buildDateFilter(req.query.startDate, req.query.endDate, req.user.id);
 
     // Run all queries in parallel
     const [difficultDestinations, difficultyDrivers, timePatterns] = await Promise.all([
@@ -219,7 +221,7 @@ router.get('/insights', async (req, res) => {
 router.get('/trends', async (req, res) => {
   try {
     const { groupBy = 'day' } = req.query;
-    const dateFilter = buildDateFilter(req.query.startDate, req.query.endDate);
+    const dateFilter = buildDateFilter(req.query.startDate, req.query.endDate, req.user.id);
 
     let groupFormat;
     if (groupBy === 'hour') {

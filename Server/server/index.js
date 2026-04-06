@@ -72,8 +72,8 @@ connectDB();
 
 // Routes
 app.use('/api/auth', authRoutes);
-app.use('/api/flights', flightRoutes);
-app.use('/api/analytics', analyticsRoutes);
+app.use('/api/flights', auth, flightRoutes);
+app.use('/api/analytics', auth, analyticsRoutes);
 app.use('/api/upload', auth, uploadRoutes);
 app.use('/api/json-upload', auth, jsonUploadRoutes);
 app.use('/api/process-data', auth, processDataRoutes);

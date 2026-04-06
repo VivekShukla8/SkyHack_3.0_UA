@@ -83,7 +83,7 @@ router.get('/status', async (req, res) => {
 router.get('/debug-data', async (req, res) => {
   try {
     const UploadedData = require('../models/UploadedData');
-    const data = await UploadedData.find({}).limit(3);
+    const data = await UploadedData.find({ userId: req.user?.id }).limit(3);
     
     if (data.length > 0) {
       const debugInfo = data.map(item => ({
