@@ -1,28 +1,47 @@
-# United Airlines Flight Difficulty Score System
+# ✈️ United Airlines Flight Difficulty Score System
 
-A comprehensive MERN stack application that calculates and visualizes flight difficulty scores for United Airlines operations at Chicago O'Hare International Airport (ORD).
+A comprehensive MERN stack application that calculates and visualizes flight difficulty scores for United Airlines operations at Chicago O'Hare International Airport (ORD). Built for **SkyHack 3.0**.
+
+---
 
 ## 🚀 Features
 
-- **Real-time Flight Difficulty Scoring**: Advanced algorithm that considers multiple operational factors
-- **Interactive Dashboard**: Visual analytics and insights for operational teams
-- **Data Management**: CSV upload and JSON-based processing pipeline for flight data
-- **Operational Insights**: Recommendations and trend analysis
-- **User Authentication**: JWT-based login/register system with per-user data scoping
-- **Dark / Light Theme**: Toggle between dark and light modes across the entire UI
-- **Processing Controls**: Real-time progress tracking with cancel support during data processing
-- **Responsive Design**: Works on desktop and mobile devices
+- **Public Landing Page**: A rich, animated landing page introducing the platform — with interactive UI mockups, algorithm breakdown, workflow guide, and call-to-action for new users
+- **Real-time Flight Difficulty Scoring**: Advanced 6-factor weighted algorithm that scores every flight on a 0–100 scale
+- **Interactive Dashboard**: KPI cards, bar/area charts, daily difficulty distribution, fleet status, and top delayed routes
+- **Flight List**: Sortable, filterable table with difficulty scores, ranks, delays, load factors, and category badges
+- **In-Depth Analytics**: EDA, destination heatmaps, hourly difficulty patterns, trend analysis, and AI-generated operational recommendations
+- **Bulk Data Pipeline**: CSV upload for 5 data sources (airports, flights, PNR, remarks, bags) with real-time progress tracking and cancel support
+- **User Authentication & Data Isolation**: JWT-based login/register with strict per-user data scoping — users never see another account's data
+- **Route Protection**: All data pages are wrapped with `RequireAuth` guards; unauthenticated users are redirected to login
+- **Dark / Light Theme**: Full theme toggle using Ant Design's `darkAlgorithm` / `defaultAlgorithm` via `ConfigProvider`, with CSS variable-based theming for custom components
+- **Processing Controls**: Real-time progress bar with cancel option during data processing; navigation is locked while processing is active
+- **Responsive Design**: Works on desktop, tablet, and mobile devices
+
+---
 
 ## 📊 Difficulty Score Components
 
 The flight difficulty score is calculated using six weighted factors:
 
-1. **Delay Factor (25%)**: Based on departure delay minutes
-2. **Ground Time Constraint (20%)**: Ratio of scheduled vs minimum turn time
-3. **Passenger Load Factor (15%)**: Aircraft capacity utilization
-4. **Special Service Requests (15%)**: Wheelchair, unaccompanied minors, etc.
-5. **Bag Complexity (15%)**: Transfer bags, hot transfers, bag volume
-6. **Aircraft Type Factor (10%)**: Fleet type and carrier complexity
+| Factor | Weight | Description |
+|--------|--------|-------------|
+| **Departure Delay** | 25% | Minutes of actual vs scheduled departure delay |
+| **Ground Time Constraint** | 20% | Ratio of scheduled vs minimum turn time |
+| **Passenger Load Factor** | 15% | Aircraft capacity utilization (passengers ÷ seats) |
+| **Special Service Requests** | 15% | Wheelchair, unaccompanied minor, and SSR requests |
+| **Bag Complexity** | 15% | Transfer bags, hot transfers, bags-per-passenger ratio |
+| **Aircraft Type Factor** | 10% | Fleet type and carrier complexity adjustment |
+
+### Difficulty Categories
+
+| Category | Percentile | Meaning |
+|----------|-----------|---------|
+| 🟢 **Easy** | Bottom 33% | Smooth operations expected |
+| 🟡 **Medium** | Middle 34% | Monitor and prepare |
+| 🔴 **Difficult** | Top 33% | Needs extra resources and attention |
+
+---
 
 ## 🛠️ Technology Stack
 
@@ -38,12 +57,14 @@ The flight difficulty score is calculated using six weighted factors:
 
 ### Frontend
 - **React 18** with functional components & hooks
-- **Ant Design (v6)** for UI components
+- **Ant Design (v5)** with dynamic `darkAlgorithm` / `defaultAlgorithm` theming
 - **Recharts (v3)** for data visualization (bar, line, pie, radar, area charts)
-- **React Router v6** for client-side routing
-- **Axios** for API calls
+- **React Router v6** for client-side routing with protected routes
+- **Axios** for API calls with JWT interceptors
 - **Day.js** & **Moment.js** for date handling
 - **Context API** for global state (Auth, Theme, Processing)
+
+---
 
 ## 📁 Project Structure
 
@@ -52,25 +73,29 @@ UnitedAirlines/
 ├── Client/                          # React frontend
 │   ├── public/
 │   └── src/
-│       ├── api/                     # API utility functions
+│       ├── api/
+│       │   └── axios.js             # Axios instance with JWT interceptors
 │       ├── auth/
-│       │   └── AuthContext.js       # JWT auth context & provider
+│       │   ├── AuthContext.js       # JWT auth context & provider
+│       │   └── RequireAuth.js       # Route guard — redirects unauthenticated users
 │       ├── components/
 │       │   ├── DataProcessor.js     # Real-time data processing with progress & cancel
-│       │   └── Navbar.js            # Top navigation bar with theme toggle
+│       │   └── Navbar.js            # Fixed navbar with centered nav, theme toggle, user menu
 │       ├── context/
 │       │   ├── ProcessingContext.js  # Processing state (locks navigation during processing)
-│       │   └── ThemeContext.js       # Dark / light theme context
+│       │   └── ThemeContext.js       # Dark / light theme via data-theme attribute
 │       ├── pages/
+│       │   ├── LandingPage.js       # Public landing page with hero, features, algorithm, previews
+│       │   ├── LandingPage.css      # Landing page styles (dark & light mode)
 │       │   ├── Analytics.js         # EDA, destination analysis, insights, trends
 │       │   ├── Dashboard.js         # KPI cards, charts, difficulty distribution
 │       │   ├── DataUpload.js        # CSV upload for 5 data types (max 50 MB)
 │       │   ├── FlightDetails.js     # Per-flight difficulty breakdown & radar chart
 │       │   ├── FlightList.js        # Searchable/filterable flight table
-│       │   ├── Login.js             # User login page
+│       │   ├── Login.js             # User login page (redirects to origin after auth)
 │       │   ├── Register.js          # User registration page
 │       │   └── StoredData.js        # View & clear uploaded JSON data
-│       ├── App.js                   # Root component with routes & providers
+│       ├── App.js                   # Root component — AppShell with ConfigProvider theming
 │       ├── App.css                  # App-level styles
 │       └── index.css                # Global design system & theme variables
 │
@@ -86,13 +111,13 @@ UnitedAirlines/
 │       │   ├── PNR.js               # PNR flight-level schema
 │       │   ├── PNRRemark.js         # PNR remark-level schema
 │       │   ├── UploadedData.js      # Uploaded JSON metadata per user
-│       │   └── User.js             # User schema (username, password hash)
+│       │   └── User.js             # User schema (email, password hash)
 │       ├── routes/
 │       │   ├── analytics.js         # EDA, destination, insights, trends endpoints
 │       │   ├── auth.js              # Register & login endpoints
 │       │   ├── flights.js           # Flight CRUD & difficulty details
 │       │   ├── jsonUpload.js        # JSON data upload & retrieval per user
-│       │   ├── processData.js       # Trigger server-side data processing
+│       │   ├── processData.js       # Trigger server-side data processing (user-scoped)
 │       │   └── upload.js            # CSV file upload handling
 │       ├── services/
 │       │   ├── dataProcessor.js     # Joins datasets & computes difficulty scores
@@ -105,8 +130,10 @@ UnitedAirlines/
 ├── sample-data/                     # Sample CSV files for testing
 ├── scripts/                         # Utility scripts (setup, data generation, debug)
 ├── .gitignore
-└── readme.md
+└── README.md
 ```
+
+---
 
 ## 🚀 Quick Start
 
@@ -141,7 +168,7 @@ UnitedAirlines/
    mongod
    ```
 
-5. **Start the backend** (runs on port 5000)
+5. **Start the backend** (runs on port 9001)
    ```bash
    cd Server/server
    npm run dev
@@ -159,40 +186,63 @@ The backend `.env` file is located at `Server/server/.env`:
 
 ```env
 MONGODB_URI=mongodb://localhost:27017/flight-difficulty
-PORT=5000
+PORT=9001
 NODE_ENV=development
 CORS_ORIGIN=http://localhost:3000
+JWT_SECRET=your_jwt_secret_key
 ```
 
-## 📊 Data Upload
+---
 
-1. Register / Log in to your account
-2. Navigate to the **Data Upload** page
-3. Select the appropriate data type:
-   - Flight Level Data
-   - PNR Flight Level Data
-   - PNR Remark Level Data
-   - Bag Level Data
-   - Airports Data
-4. Upload your CSV file (max 50 MB)
-5. Monitor upload progress and results
+## 🌐 Application Pages
 
-### Recommended Upload Order
+### Landing Page (`/`)
+The public-facing landing page — accessible without login. It includes:
+- **Hero section** with platform tagline, stats bar, and CTA buttons
+- **Features grid** — 6 capability cards (Scoring, Analytics, Pipeline, Security, Insights, Collaboration)
+- **Algorithm breakdown** — visual representation of the 6 weighted scoring factors
+- **Workflow timeline** — 4 steps from upload to insights
+- **Interactive previews** — CSS mini-mockups of Dashboard, Flight List, Analytics, and Data Upload
+- **Data pipeline** — 5 data sources visualization
+- **CTA section** with sign-up/sign-in buttons
+- **Footer** with branding
 
-For best results, upload data in this order:
-1. Airports Data
-2. Flight Level Data
-3. PNR Flight Level Data
-4. PNR Remark Level Data
-5. Bag Level Data
+### Dashboard (`/dashboard`) 🔒
+- KPI cards (total flights, avg difficulty, avg delay, avg load factor)
+- Daily flight difficulty distribution via bar/area charts
+- Score distribution by day with custom tooltips
+- Ground time and delay pattern analysis
 
-### Data Processing
+### Flight List (`/flights`) 🔒
+- Sortable table with difficulty scores, ranks, delays, load factors
+- Filter by date, difficulty category (Easy/Medium/Difficult), and carrier (Mainline/Express)
+- Pagination with configurable page size
+- Click any flight to view detailed breakdown
 
-After uploading, navigate to the **Stored Data** page to:
-- View uploaded JSON files scoped to your user account
-- Trigger the **data processing pipeline** (joins all datasets, computes difficulty scores)
-- Track real-time processing progress with a cancel option
-- Clear processed data when needed
+### Flight Details (`/flights/:id`) 🔒
+- Detailed breakdown of all six difficulty factors
+- Visual **radar chart** of score components
+- Operational metrics and per-flight recommendations
+
+### Analytics (`/analytics`) 🔒
+- **EDA tab**: Distribution histograms, correlation analysis
+- **Destinations tab**: Difficulty heatmap by destination
+- **Insights tab**: Operational recommendations
+- **Trends tab**: Time-series difficulty trends
+
+### Data Upload (`/upload`) 🔒
+- Drag-and-drop CSV upload for 5 data types
+- Guided upload order with validation
+- Max 50 MB per file
+
+### Stored Data (`/stored-data`) 🔒
+- View count of uploaded JSON files per user
+- Process or clear data with one click
+- Real-time progress bar with cancel option
+
+> 🔒 = Requires authentication. Unauthenticated users are redirected to `/login`.
+
+---
 
 ## 🔧 API Endpoints
 
@@ -202,15 +252,16 @@ After uploading, navigate to the **Stored Data** page to:
 | `POST` | `/api/auth/register` | Register a new user |
 | `POST` | `/api/auth/login` | Login and receive JWT token |
 
-### Flights
+### Flights (🔒 Authenticated, user-scoped)
 | Method | Endpoint | Description |
 |--------|----------|-------------|
 | `GET` | `/api/flights` | Get flights with filtering & pagination |
 | `GET` | `/api/flights/:id` | Get specific flight by ID |
 | `GET` | `/api/flights/:id/difficulty-details` | Get difficulty breakdown |
 | `GET` | `/api/flights/daily/:date/summary` | Get daily summary |
+| `GET` | `/api/flights/date-range` | Get min/max date range |
 
-### Analytics
+### Analytics (🔒 Authenticated, user-scoped)
 | Method | Endpoint | Description |
 |--------|----------|-------------|
 | `GET` | `/api/analytics/eda` | Exploratory data analysis |
@@ -218,7 +269,7 @@ After uploading, navigate to the **Stored Data** page to:
 | `GET` | `/api/analytics/insights` | Operational insights |
 | `GET` | `/api/analytics/trends` | Difficulty trends over time |
 
-### Upload & Data
+### Upload & Data (🔒 Authenticated, user-scoped)
 | Method | Endpoint | Description |
 |--------|----------|-------------|
 | `POST` | `/api/upload/csv` | Upload CSV data file |
@@ -227,63 +278,32 @@ After uploading, navigate to the **Stored Data** page to:
 | `DELETE` | `/api/json-upload` | Clear uploaded data |
 | `POST` | `/api/process-data` | Trigger data processing pipeline |
 
-## 📈 Usage
+---
 
-### Dashboard
-- View KPI cards (total flights, avg difficulty, avg delay, avg load factor)
-- Monitor daily flight difficulty distribution via bar/area charts
-- Analyze ground time and delay patterns
+## 🛡️ Security & Data Isolation
 
-### Flight List
-- Browse all flights with difficulty scores in a sortable table
-- Filter by date, category, carrier, aircraft type
-- Click any flight to view detailed breakdown
+- **JWT Authentication**: Token-based auth with `Bearer` headers on every API call
+- **Per-User Data Scoping**: All database queries are filtered by `userId` — users never see other accounts' data
+- **Route Protection**: Frontend `RequireAuth` component guards all data pages; unauthenticated users are redirected to login with return-path preserved
+- **API Rate Limiting**: Express rate limiter on all endpoints
+- **File Validation**: Type and size checks on CSV uploads (max 50 MB)
+- **CORS Protection**: Configurable origin whitelist
+- **Password Hashing**: bcryptjs with salt rounds
+- **401 Interceptor**: Automatic token cleanup and redirect on expired/invalid tokens
 
-### Flight Details
-- Detailed breakdown of all six difficulty factors
-- Visual **radar chart** of score components
-- Operational metrics and recommendations
+---
 
-### Analytics
-- **EDA tab**: Distribution histograms, correlation analysis
-- **Destinations tab**: Difficulty heatmap by destination
-- **Insights tab**: Operational recommendations
-- **Trends tab**: Time-series difficulty trends
+## 🎨 Theme System
 
-### Stored Data
-- View count of uploaded JSON files per user
-- Process or clear data with one click
-- Real-time progress bar during processing
+The application supports **Dark** and **Light** modes:
 
-## 🎯 Key Metrics
+- **Toggle**: Sun/Moon icon in the navbar switches themes instantly
+- **Ant Design Integration**: `ConfigProvider` dynamically switches between `theme.darkAlgorithm` and `theme.defaultAlgorithm`
+- **Custom Tokens**: `colorBgContainer`, `colorBgElevated`, `colorText`, `colorBorder`, etc. are set per-theme
+- **CSS Variables**: `--bg-page`, `--bg-card`, `--text-primary`, `--text-muted`, `--navbar-bg`, etc. in `index.css`
+- **Persistence**: Theme preference is stored via `data-theme` attribute on `<html>`
 
-- **Average Delay**: Mean departure delay in minutes
-- **Load Factor**: Percentage of seats occupied
-- **Ground Time Ratio**: Scheduled vs minimum turn time
-- **Transfer Bag Ratio**: Percentage of transfer bags
-- **Special Service Rate**: Requests per passenger
-
-## 🔍 Difficulty Categories
-
-- **Difficult** (Top 33%): Highest complexity flights requiring extra attention
-- **Medium** (Middle 33%): Moderate complexity with standard procedures
-- **Easy** (Bottom 33%): Low complexity flights with minimal issues
-
-## 📱 Responsive Design
-
-The application is fully responsive and works on:
-- Desktop computers
-- Tablets
-- Mobile phones
-
-## 🛡️ Security Features
-
-- JWT-based user authentication
-- Per-user data scoping (users only see their own uploads)
-- Rate limiting on API endpoints
-- File upload validation (type & size)
-- CORS protection
-- Password hashing with bcryptjs
+---
 
 ## 📊 Sample Data
 
@@ -294,6 +314,15 @@ Sample CSV files are provided in the `sample-data/` directory for testing:
 - Bag Level Data (sample & large)
 - Airports Data (sample & large)
 
+### Recommended Upload Order
+1. Airports Data
+2. Flight Level Data
+3. PNR Flight Level Data
+4. PNR Remark Level Data
+5. Bag Level Data
+
+---
+
 ## 🔧 Utility Scripts
 
 The `scripts/` directory contains helpful utilities:
@@ -302,6 +331,8 @@ The `scripts/` directory contains helpful utilities:
 - `generate-large-sample-data.js` — Generate large test datasets
 - `generate-test-output.js` — Generate test output data
 - `debug-csv.js` — Debug CSV parsing issues
+
+---
 
 ## 📄 License
 
