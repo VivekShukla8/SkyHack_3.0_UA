@@ -6,6 +6,7 @@ import {
   SafetyOutlined, RocketOutlined, TeamOutlined,
   DashboardOutlined, LineChartOutlined, DatabaseOutlined,
   CheckCircleOutlined, ArrowRightOutlined, StarFilled,
+  GithubOutlined,
 } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../auth/AuthContext';
@@ -104,6 +105,14 @@ export default function LandingPage() {
                 </Button>
               </>
             )}
+            <Button
+              size="large"
+              className="landing-cta-docs"
+              icon={<GithubOutlined />}
+              onClick={() => window.open('https://github.com/VivekShukla8/SkyHack_3.0_UA', '_blank')}
+            >
+              Documentation
+            </Button>
           </Space>
 
           {/* Stats bar */}

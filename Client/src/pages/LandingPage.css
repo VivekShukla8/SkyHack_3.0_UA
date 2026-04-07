@@ -150,14 +150,32 @@
   background: rgba(255,255,255,0.12) !important;
   border-color: rgba(255,255,255,0.2) !important;
 }
-[data-theme="light"] .landing-cta-secondary {
+[data-theme="light"] .landing-cta-section .landing-cta-secondary {
   background: rgba(0,0,0,0.04) !important;
   border: 1px solid rgba(0,0,0,0.15) !important;
   color: #1e293b !important;
 }
-[data-theme="light"] .landing-cta-secondary:hover {
+[data-theme="light"] .landing-cta-section .landing-cta-secondary:hover {
   background: rgba(0,0,0,0.08) !important;
   border-color: rgba(0,0,0,0.25) !important;
+}
+
+.landing-cta-docs {
+  height: 48px !important;
+  padding: 0 28px !important;
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  border-radius: 12px !important;
+  background: rgba(255,255,255,0.06) !important;
+  border: 1px solid rgba(255,255,255,0.15) !important;
+  color: #e2e8f0 !important;
+  transition: all 0.3s ease !important;
+}
+.landing-cta-docs:hover {
+  background: rgba(255,255,255,0.14) !important;
+  border-color: rgba(255,255,255,0.3) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 20px rgba(255,255,255,0.08) !important;
 }
 
 /* ── SECTIONS ─────────────────────────────────────────────── */
